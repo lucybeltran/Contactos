@@ -1,0 +1,133 @@
+/* Contenedor general */
+.contenedor {
+    max-width: 750px;
+    margin: 40px auto;
+    background-color: #1e1e1e;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 0 15px rgba(0, 255, 100, 0.1);
+    font-family: 'Segoe UI', sans-serif;
+    color: #d5ffd0;
+}
+
+/* Título */
+h1 {
+    text-align: center;
+    color: #80ff80;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+/* Tabla de contactos */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+    background-color: #2a2a2a;
+    color: #d5ffd0;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+th, td {
+    padding: 12px 10px;
+    text-align: left;
+    border-bottom: 1px solid #3d3d3d;
+}
+
+th {
+    background-color: #1c1c1c;
+    color: #8fff8f;
+}
+
+/* Botones y enlaces */
+a, button, .btn-volver {
+    background-color: #2ecc71;
+    color: #1e1e1e;
+    padding: 8px 12px;
+    margin: 3px;
+    border: none;
+    border-radius: 6px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+    display: inline-block;
+}
+
+a:hover, button:hover {
+    background-color: #27ae60;
+    color: #ffffff;
+}
+
+/* Alerta de mensaje */
+.alerta {
+    background-color: #14532d;
+    color: #9ae6b4;
+    border: 1px solid #4ade80;
+    padding: 12px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    text-align: center;
+    font-weight: bold;
+}
+
+/* Buscador */
+.busqueda {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.busqueda input {
+    width: 65%;
+    padding: 10px;
+    border: 1px solid #4ade80;
+    background-color: #333;
+    color: #fff;
+    border-radius: 8px 0 0 8px;
+}
+
+.busqueda button {
+    background-color: #4ade80;
+    border: none;
+    padding: 10px 16px;
+    color: #1e1e1e;
+    font-weight: bold;
+    border-radius: 0 8px 8px 0;
+    cursor: pointer;
+}
+
+.busqueda button:hover {
+    background-color: #22c55e;
+    color: #fff;
+}
+
+/* Botón actualizar */
+.boton-actualizar {
+    background-color: #4ade80; /* verde claro */
+    color: #1e1e1e;
+    padding: 6px 10px;
+    margin-right: 5px;
+    border-radius: 6px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: 0.3s;
+}
+.boton-actualizar:hover {
+    background-color: #22c55e;
+    color: white;
+}
+
+/* Botón eliminar */
+.boton-eliminar {
+    background-color: #f87171; /* rojo claro */
+    color: white;
+    padding: 6px 10px;
+    border-radius: 6px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: 0.3s;
+}
+.boton-eliminar:hover {
+    background-color: #dc2626;
+}
