@@ -108,8 +108,10 @@ class Contacto extends Conexion {
         $stmt = $this->link->prepare(
             "SELECT c.*, cat.nombre AS categoria_nombre
              FROM contactos c
-             LEFT JOIN categorias cat ON c.categoria_id = cat.id"
+             LEFT JOIN categorias cat ON c.categoria_id = cat.id
+             ORDER BY c.id ASC"
         );
+        
         $stmt->execute();
         $res = $stmt->get_result();
 
