@@ -1,7 +1,6 @@
 <?php
 require_once "Conexion.php";
 
-
 class Telefono extends Conexion {
     
     // Obtener todos los teléfonos de un contacto
@@ -29,7 +28,6 @@ class Telefono extends Conexion {
         $stmt->close();
     }
     
-
     // Eliminar todos los teléfonos de un contacto
     public function eliminarPorContacto($contacto_id) {
         $this->conectar();
@@ -50,5 +48,14 @@ class Telefono extends Conexion {
             }
         }
     }
-    
+
+    // Verifica si un número ya está registrado
+    public function existeTelefono($numero) {
+        $this->conectar();
+        $stmt = $this->link->prepare("SELECT id FROM telefonos WHERE numero = ?");
+        $stmt->bind_param("s", $numero);
+        $stmt->execute();
+        $res = $stmt->get_result();
+        return $res->num_rows > 0;
+    }
 }

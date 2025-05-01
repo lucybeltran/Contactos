@@ -2,7 +2,6 @@
 require_once "Conexion.php";
 require_once 'Telefono.php';
 
-
 // Clase Contacto que hereda de la clase Conexion
 class Contacto extends Conexion {
     // Atributos del contacto (campos de la tabla)
@@ -30,10 +29,9 @@ class Contacto extends Conexion {
         // LEFT JOIN para traer también el nombre de la categoría
         $stmt = $this->link->prepare(
             "SELECT contactos.*, categorias.nombre AS categoria_nombre 
- FROM contactos 
- LEFT JOIN categorias ON contactos.categoria_id = categorias.id 
- ORDER BY contactos.id ASC"
-
+             FROM contactos 
+             LEFT JOIN categorias ON contactos.categoria_id = categorias.id 
+             ORDER BY contactos.id ASC"
         );
         $stmt->execute(); // Ejecutamos
         $res = $stmt->get_result(); // Obtenemos el resultado
@@ -69,7 +67,6 @@ class Contacto extends Conexion {
         $stmt->close();
     }
     
-
     // Método para eliminar un contacto
     public function delete($id) {
         $this->conectar(); // Conectamos
@@ -104,32 +101,36 @@ class Contacto extends Conexion {
     }
 
     // Obtener todos los contactos con sus teléfonos
-public function getAllConTelefonos() {
-    $this->conectar();
+    public function getAllConTelefonos() {
+        $this->conectar();
 
-    // Trae todos los contactos con la categoría
-    $stmt = $this->link->prepare(
-        "SELECT c.*, cat.nombre AS categoria_nombre
-         FROM contactos c
-         LEFT JOIN categorias cat ON c.categoria_id = cat.id"
-    );
-    $stmt->execute();
-    $res = $stmt->get_result();
+        // Trae todos los contactos con la categoría
+        $stmt = $this->link->prepare(
+            "SELECT c.*, cat.nombre AS categoria_nombre
+             FROM contactos c
+             LEFT JOIN categorias cat ON c.categoria_id = cat.id"
+        );
+        $stmt->execute();
+        $res = $stmt->get_result();
 
-    $contactos = [];
-    while ($fila = $res->fetch_assoc()) {
-        // Obtener los teléfonos para este contacto
-        $id = $fila['id'];
-        $telefonoModelo = new Telefono();
-        $telefonos = $telefonoModelo->getPorContacto($id);
+        $contactos = [];
+        while ($fila = $res->fetch_assoc()) {
+            // Obtener los teléfonos para este contacto
+            $id = $fila['id'];
+            $telefonoModelo = new Telefono();
+            $telefonos = $telefonoModelo->getPorContacto($id);
 
-        // Agregamos los teléfonos al contacto
-        $fila['telefonos'] = $telefonos;
+            // Agregamos los teléfonos al contacto
+            $fila['telefonos'] = $telefonos;
 
-        $contactos[] = $fila;
+            $contactos[] = $fila;
+        }
+
+        return $contactos;
     }
 
-    return $contactos;
-}
-    
+    //  Obtener el ID insertado después de crear
+    public function getInsertId() {
+        return $this->link->insert_id;
+    }
 }

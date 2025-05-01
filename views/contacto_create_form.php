@@ -7,16 +7,15 @@
 </head>
 <body>
     <h1>Registrar nuevo contacto</h1>
-
-    <form action="contacto_store.php" method="POST">
+    <form action="contacto_store.php" method="POST" class="formulario">
         <label for="nombre">Nombre:</label><br>
         <input type="text" name="nombre" required><br><br>
 
         <label for="apellido">Apellido:</label><br>
         <input type="text" name="apellido" required><br><br>
 
-        <label for="telefono">Teléfono:</label><br>
-        <input type="text" name="telefono" required><br><br>
+        <label for="telefono[]">Teléfono:</label><br>
+        <input type="text" name="telefono[]" required><br><br>
 
         <label for="correo">Correo:</label><br>
         <input type="email" name="correo"><br><br>
